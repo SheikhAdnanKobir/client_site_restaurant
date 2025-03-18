@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OurFeedBack = () => {
+const Register = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const OurFeedBack = () => {
     );
 };
 
-export default OurFeedBack;
+export default Register;
