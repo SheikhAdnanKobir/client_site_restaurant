@@ -262,9 +262,9 @@ const AuthContext = ({ children }) => {
 
     return (
         <div>
-            <AuthManage.Provider value={routing}>
+            <AuthUse.Provider value={routing}>
                 {children}
-            </AuthManage.Provider>
+            </AuthUse.Provider>
         </div>
     );
 };

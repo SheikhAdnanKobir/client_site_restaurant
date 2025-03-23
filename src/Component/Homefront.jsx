@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+const Homefront = () => {
     return (
         <div>
             <h6 className='bg-blue-900'>Home Page</h6>
@@ -8,4 +8,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Homefront;
