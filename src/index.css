@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.underline {
+    position: relative;
+    text-decoration: none;
+    color: #ffffff; /* Text Color */
+  }
+  
+  .underline::after {
+    content: "";
+    position: absolute;
+    left: 50%; 
+    bottom: -5px; /* Distance from text */
+    width: 0;
+    height: 4px;
+    background-color: #ff1919; /* Underline Color */
+    transition:  0.2s ease-out, left 0.2s ease-out;
+  }
+  
+  .underline:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+
+
+ /* .signup-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #ff5722;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-btn:hover {
+  background: #e64a19;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 93, 44, 0.4);
+} */
+.signup-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #ff5722;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.signup-btn:hover {
+  background: #e64a19;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 93, 44, 0.4);
+}
+

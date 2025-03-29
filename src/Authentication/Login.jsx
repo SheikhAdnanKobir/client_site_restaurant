@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 import { SiGooglecloud } from "react-icons/si";
@@ -14,7 +14,6 @@ const Login = () => {
     const { authSignIn, handelGoogleSingIn } = useContext(AuthUse);
     const [visible, setVisible] = useState(false);
 
-    const Nivget = useNavigate();
 
     const handelVidible = () => {
         setVisible(!visible)
@@ -30,10 +29,6 @@ const Login = () => {
         console.log(email, password);
 
         authSignIn(email, password)
-
-        Nivget('/')
-
-
     }
 
 
@@ -60,12 +55,12 @@ const Login = () => {
             }}></div>
 
             <div className='flex justify-center items-center h-dvh z-10'>
-                <div className=' flex justify-center items-center mx-auto '>
+                <div className=' flex justify-center items-center mt-20 mx-auto '>
                     <Helmet>
                         <title>Login</title>
                     </Helmet>
                     <div className="mx-auto">
-                        <div className=" bg-green-900/40 py-20 px-20 lg:rounded-l-lg md:rounded-l-2xl  xs:rounded-sm flex flex-col">
+                        <div className=" bg-green-900/40 py-10 px-16 lg:rounded-l-lg md:rounded-l-2xl  xs:rounded-sm flex flex-col">
                             <div className="">
                                 <h1 className="text-4xl font-bold text-center text-white">Welcome Back</h1>
                                 <h1 className="text-lg text-center text-white">Login to your account</h1>
@@ -80,7 +75,7 @@ const Login = () => {
                                             </label><br />
                                             <input type="text" name='email' placeholder="email" className="input input-bordered w-80" required />
                                         </div>
-                                        <div className="relative">
+                                        <div className="">
                                             <label className="label">
                                                 <span className="label-text text-white font-bold text-xl mb-1">Password</span>
                                             </label><br />
@@ -104,7 +99,7 @@ const Login = () => {
                         </div>
                     </div>
                     <div className='border-2 h-96 absolute ml-10 sm:hidden xs:hidden md:block lg:block'></div>
-                    <div className='  bg-green-900/40 h-[618px] rounded-r-lg w-96  md:block lg:block sm:hidden xs:hidden'><Lottie className='h-full w-ful' animationData={LottieAnimation}></Lottie></div>
+                    <div className='  bg-green-900/40 h-[530px] rounded-r-lg w-96  md:block lg:block sm:hidden xs:hidden'><Lottie className='h-full w-ful' animationData={LottieAnimation}></Lottie></div>
                 </div>
             </div>
         </div >

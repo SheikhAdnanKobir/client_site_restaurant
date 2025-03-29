@@ -5,6 +5,7 @@ import ErrorPage from '../Layout/ErrorPage';
 import FoodsItems from './../Component/FoodsItems';
 import Homefront from './../Component/Homefront';
 import Login from '../Authentication/Login';
+import Register from './../Authentication/Register';
 
 const Router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const Router = createBrowserRouter([
       {
         path: "/allcategory",
         element: <FoodsItems></FoodsItems>
+      },
+      {
+        path: "/signup",
+        element: <Register></Register>
       },
       {
         path: "/login",

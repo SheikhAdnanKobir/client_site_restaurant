@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import React, { createContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { auth } from '../Firebase/Firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthUse = createContext(null);
 
@@ -12,6 +13,7 @@ const AuthContext = ({ children }) => {
     const [loading, setLoading] = useState(false);
 
     const provider = new GoogleAuthProvider();
+
 
 
 
@@ -69,6 +71,7 @@ const AuthContext = ({ children }) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 // Signed in
+                useNavigate("/")
                 const user = result.user;
                 const Toast = Swal.mixin({
                     toast: true,
