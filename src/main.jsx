@@ -5,6 +5,7 @@ import {RouterProvider} from "react-router-dom";
 import "./index.css";
 import Router from './Router/Router';
 import AuthContext from './AuthContext/AuthContext';
+import 'atropos/css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

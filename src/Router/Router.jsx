@@ -2,10 +2,11 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import MainSection from '../Layout/MainSection';
 import ErrorPage from '../Layout/ErrorPage';
-import FoodsItems from './../Component/FoodsItems';
 import Homefront from './../Component/Homefront';
 import Login from '../Authentication/Login';
 import Register from './../Authentication/Register';
+import Allfoods from '../Component/Allfoods';
+import Gallery from '../Component/Gallery';
 
 const Router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const Router = createBrowserRouter([
         element: <Homefront></Homefront>
       },
       {
-        path: "/allcategory",
-        element: <FoodsItems></FoodsItems>
+        path: "/foods",
+        element:<Allfoods></Allfoods>
+      },
+      {
+        path:"/gallery",
+        element:<Gallery></Gallery>
       },
       {
         path: "/signup",

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FoodsItems = () => {
+const Gallery = () => {
     return (
         <div>
-            
+            this i a gallery
         </div>
     );
 };
 
-export default FoodsItems;
+export default Gallery;

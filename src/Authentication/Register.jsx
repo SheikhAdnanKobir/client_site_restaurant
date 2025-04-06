@@ -4,7 +4,6 @@ import bgImg from "../assets/output.jpg";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
-import { FcGoogle } from 'react-icons/fc';
 import { AuthUse } from '../AuthContext/AuthContext';
 import Lottie from 'lottie-react';
 import LottieAnimatios from '../assets/lottie_animation.json'
@@ -45,7 +44,7 @@ const Register = () => {
         const password = clicked.password.value;
         const check = clicked.checkbox.checked;
 
-        const objValue = { name, email, password, name, photoUrlAdd }
+        const objValue = { name, email, password, photoUrlAdd }
         // console.log(objValue);
 
 
