@@ -154,14 +154,15 @@ const Register = () => {
     return (
         <div style={{
             position: 'relative',
-            height: '100vh',
+            height: '',
             overflow: 'hidden'
+            
         }}>
             <div style={bgimg}></div>
             <Helmet>
                 <title>Sign up</title>
             </Helmet>
-            <div className=" flex justify-center items-center h-dvh z-10 mt-12">
+            <div className=" flex justify-center items-center h-dvh z-10 my-12">
                 <div className='flex justify-center items-center mx-auto'>
                     <div className='mx-auto'>
                         <div className=" bg-green-900/40 py-5 px-10 lg:rounded-l-lg md:rounded-l-2xl  xs:rounded-sm flex flex-col">
@@ -208,7 +209,7 @@ const Register = () => {
                                 </div>
                             </form>
                             <p className='text-center my-5'>
-                                <span className='text-white text-lg'>Already have account?</span><Link to={"/login"} className="text-lg font-bold "> sign In</Link>
+                                <span className='text-white text-lg'>Already have account?</span><Link to={"/login"} className="text-lg font-bold text-white"> sign In</Link>
                             </p>
                         </div>
                     </div>
