@@ -158,11 +158,13 @@ const Register = () => {
             overflow: 'hidden'
             
         }}>
-            <div style={bgimg}></div>
+            <div>
+                <img className='z-0 absolute h-lvh w-screen object-cover blur-md ' src={bgImg} alt="" />
+            </div>
             <Helmet>
                 <title>Sign up</title>
             </Helmet>
-            <div className=" flex justify-center items-center h-dvh z-10 my-12">
+            <div className="relative flex justify-center items-center h-lvh z-10 my-12">
                 <div className='flex justify-center items-center mx-auto'>
                     <div className='mx-auto'>
                         <div className=" bg-green-900/40 py-5 px-10 lg:rounded-l-lg md:rounded-l-2xl  xs:rounded-sm flex flex-col">

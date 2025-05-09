@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import React, { createContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { auth } from '../Firebase/Firebase.init';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const AuthUse = createContext(null);
 
@@ -10,10 +10,9 @@ const AuthContext = ({ children }) => {
     const [cataItems, setCataItems] = useState([]);
     const [user, setUser] = useState(null);
     const [addtheme, setAddtheme] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const provider = new GoogleAuthProvider();
-
 
 
 
@@ -71,7 +70,6 @@ const AuthContext = ({ children }) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 // Signed in
-                useNavigate("/")
                 const user = result.user;
                 const Toast = Swal.mixin({
                     toast: true,
@@ -114,14 +112,46 @@ const AuthContext = ({ children }) => {
             })
     }
 
+
+    // JWT setup
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                setLoading(false)
             }
             else {
                 setUser(null)
             }
+
+            if (user?.email) {
+                const currentUser = { email: user.email }
+                console.log(currentUser);
+
+                // console.log(currentUser);
+                axios.post('http://localhost:5000/jwt', currentUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                        // localStorage.setItem("accessToken", res.data.token)
+                    })
+                    .catch(err => {
+                        console.error("JWT fetch failed", err);
+                    });
+            }
+            else {
+                axios.post("http://localhost:5000/logout", {}, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                        // localStorage.removeItem("accessToken")
+                    })
+            }
+
+
         });
         return () => {
             unsubscribe()
@@ -131,6 +161,7 @@ const AuthContext = ({ children }) => {
 
     const handelSingOut = () => {
         // Sign-out successful.
+
         const Toast = Swal.mixin({
             toast: true,
             position: "top",
@@ -143,7 +174,7 @@ const AuthContext = ({ children }) => {
             }
         });
         Toast.fire({
-            icon: "success",
+            icon: "warning",
             title: "Signed Out successfully"
         });
 
@@ -198,6 +229,14 @@ const AuthContext = ({ children }) => {
     const handelGoogleSingIn = () => {
         signInWithPopup(auth, provider)
             .then(() => {
+                // Signed in
+                axios.post("http://localhost:5000/jwt", { email: user?.email }, { withCredentials: true });
+                // console.log(user?.email);
+                // console.log(provider?.email);
+                // console.log(provider);
+                // console.log(auth,user);
+                
+                
                 // Password reset email sent!
                 const Toast = Swal.mixin({
                     toast: true,
@@ -211,14 +250,18 @@ const AuthContext = ({ children }) => {
                     }
                 });
                 Toast.fire({
-                    icon: "info",
+                    icon: "success",
                     title: "Successfully Google login"
                 });
             })
             .catch((error) => {
                 // Handle errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+                // const email = error?.customData?.email;
+                // const credential = GoogleAuthProvider.credentialFromError(error);        
+                // console.log('1',errorCode,'2', errorMessage,'3', email,'4', credential,'5',error);
+                
                 // console.error(`Error: ${errorCode}, Message: ${errorMessage}`);
                 if (errorCode || errorMessage) {
                     const Toast = Swal.mixin({
@@ -235,8 +278,11 @@ const AuthContext = ({ children }) => {
                     Toast.fire({
                         icon: "error",
                         title: "Something Google sign in problem!"
+                        
                     });
                 }
+                console.log("hi error",errorCode, errorMessage);
+            
             });
     }
 
@@ -259,7 +305,7 @@ const AuthContext = ({ children }) => {
 
         handelGoogleSingIn,
 
-        setLoading,loading
+        setLoading, loading
     }
 
 

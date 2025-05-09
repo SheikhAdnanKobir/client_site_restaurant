@@ -7,6 +7,13 @@ import Login from '../Authentication/Login';
 import Register from './../Authentication/Register';
 import Allfoods from '../Component/Allfoods';
 import Gallery from '../Component/Gallery';
+import Privatecontrol from '../PrivateRoute/Privatecontrol';
+import Addfood from '../PrivateRoute/Addfood';
+import Myfoods from '../PrivateRoute/Myfoods';
+import Myorders from '../PrivateRoute/Myorders';
+import Idsingal from '../Component/Idsingal';
+import Purchase from '../Component/Purchase';
+import Update from './../Component/Update';
 
 const Router = createBrowserRouter([
   {
@@ -33,6 +40,33 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element:<Login></Login>
+      },
+      {
+        path:"/addfood",
+        element:<Privatecontrol><Addfood></Addfood></Privatecontrol>
+      },
+      {
+        path:"/myfoods",
+        element:<Privatecontrol><Myfoods></Myfoods></Privatecontrol>
+      },
+      {
+        path: "/myorders",
+        element: <Privatecontrol><Myorders></Myorders></Privatecontrol>
+      },
+      {
+        path: "foods/details/:id",
+        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        element:<Idsingal></Idsingal>
+      },
+      {
+        path: "purchase/:id",
+        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        element:<Privatecontrol><Purchase></Purchase></Privatecontrol>
+      },
+      {
+        path:"myfoods/update/:id",
+        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        element:<Privatecontrol><Update></Update></Privatecontrol>
       }
     ],
   },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import Glide from '@glidejs/glide';
 import bng from '../assets/banner.jpg'
@@ -29,6 +29,7 @@ import chif10 from '../assets/Chief10.jpg';
 import disc1 from '../assets/Discount1.jpg';
 import disc2 from '../assets/Discount2.jpg';
 import disc3 from '../assets/Discount3.jpg';
+import { AuthUse } from '../AuthContext/AuthContext';
 
 const Homefront = () => {
 
@@ -38,21 +39,18 @@ const Homefront = () => {
             type: "carousel",
             perView: 2, // প্রতি স্লাইডে 2টি স্লাইড দেখা যাবে
             gap: 1, // স্লাইডের মধ্যে ১px গ্যাপ
-            autoplay: 3000, // ৩ সেকেন্ড পরপর স্লাইড হবে
+            autoplay: 2000, // 2 সেকেন্ড পরপর স্লাইড হবে
         });
 
         glide.mount(); // স্লাইডারটি মাউন্ট করুন
     }, []);
 
-    const scrollToSection = () => {
-        const section = document.getElementById('exploreSection');
-        section?.scrollIntoView({ behavior: 'smooth' });
-    };
+    const {addtheme}=useContext(AuthUse);
 
     return (
         <div>
             <div>
-                <h1 className='md:text-7xl lg:text-7xl text-4xl text-center psans mt-5'>Welcome Our <span className='text-orange-500 font-extrabold'>𝓡𝓮𝓼𝓽𝓪𝓾𝓻𝓪𝓷𝓽</span></h1>
+                <h1 className='md:text-7xl lg:text-7xl text-4xl text-center psans pt-5'>Welcome Our <span className='text-orange-500 font-extrabold'>𝓡𝓮𝓼𝓽𝓪𝓾𝓻𝓪𝓷𝓽</span></h1>
                 <p className=' max-w-[850px] text-center mx-auto my-5 psans'>Enjoy delicious, authentic food made with fresh, organic ingredients. From traditional recipes to modern favorites, we serve every meal with care and love. Experience warm hospitality, cozy ambiance, and unforgettable flavors. Taste the difference. Feel at home. Come hungry — leave happy. Your satisfaction is our priority.</p>
                 <div className='text-center'>
                     <button onClick={() => {
@@ -147,12 +145,12 @@ const Homefront = () => {
                     <h2 className='text-center text-4xl psans font-bold mb-5'>
                         Flavory Special <span className='text-red-500'>Discount%</span>
                     </h2>
-                    <p className='mx-auto text-center w-[450px]'>
+                    <p className={`mx-auto text-center w-[450px]`}>
                         Your favorite meals just became more irresistible.
                         Explore our chef-curated discounted dishes and treat yourself without breaking the bank!
                     </p>
                 </div>
-                <div className="grid grid-cols-10 grid-rows-6 w-[90%] lg:w-[60%] md:w-[60%] h-[600px] mx-auto gap-5">
+                <div className="grid grid-cols-10 grid-rows-6 w-[90%] lg:w-[60%] md:w-[60%] max-h-[700px] mx-auto gap-5">
                     <div className="relative row-span-3 col-span-10 ">
                         <img className='w-full h-full rounded-lg' src={disc1} alt="" />
                         <div className="absolute flex items-center justify-center">
@@ -181,10 +179,10 @@ const Homefront = () => {
             </div>
 
             {/*Fourth sectionextra this is  Our chief*/}
-            <div className='my-24'>
+            <div className='py-24'>
                 <div>
                     <h1 className='text-center text-4xl font-bold psans'>Our <span className='text-orange-500'>FLAVORY</span> <span className='text-red-600 font-extrabold'>Ninja's</span></h1>
-                    <p className='text-center font-semibold text-slate-200/90 psans mt-3 mb-10'>The passionate hands behind every flavorful bite. Meet the magic-makers of Flavory!</p>
+                    <p className={`text-center font-semibold  ${addtheme===true?'text-slate-200/90':'text-black'}  psans mt-3 mb-10`}>The passionate hands behind every flavorful bite. Meet the magic-makers of Flavory!</p>
                 </div>
                 <div className='grid md:grid-cols-4 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-3 w-[90%] mx-auto'>
                     <div className="relative ">

@@ -21,7 +21,7 @@ const Login = () => {
 
     const handelSignIn = e => {
         e.preventDefault();
-        console.log("Sign in button clicked");
+        // console.log("Sign in button clicked");
 
         const clicked = e.target;
         const email = clicked.email.value;
@@ -42,19 +42,11 @@ const Login = () => {
             height: '100vh',
             overflow: 'hidden'}}>
 
-            <div style={{
-                backgroundImage: `url(${BG})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                filter: 'blur(15px)', // শুধু ব্যাকগ্রাউন্ডে ব্লার
-                position: 'absolute',
-                height: '100%',
-                width: '100%',
-                zIndex: -1, // ব্যাকগ্রাউন্ডকে পেছনে রাখুন
-            }}></div>
+            <div>
+                <img className='z-0 absolute h-screen w-screen object-cover blur-md' src={BG} alt="" />
+            </div>              
 
-            <div className='flex justify-center items-center h-dvh z-10'>
+            <div className='relative flex justify-center items-center h-dvh z-10'>
                 <div className=' flex justify-center items-center mt-20 mx-auto '>
                     <Helmet>
                         <title>Login</title>

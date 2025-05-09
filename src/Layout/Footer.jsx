@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
             <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
                 <aside>
-                    <img className='w-28 mx-auto' src={logo} alt="" />
+                    <img className='w-28 mx-auto rounded-full' src={logo} alt="" />
                     <p className='text-center'>
                         Where Every Bite <br /> 
                         Tells a Story of Flavor
