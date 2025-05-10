@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { auth } from '../Firebase/Firebase.init';
 import axios from 'axios';
+import AxiosSecure from './AxiosSecure';
 
 export const AuthUse = createContext(null);
 
@@ -13,6 +14,9 @@ const AuthContext = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const provider = new GoogleAuthProvider();
+
+    const AxiosSecureUse = AxiosSecure();
+
 
 
 
@@ -69,6 +73,7 @@ const AuthContext = ({ children }) => {
     const authSignIn = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
+                AxiosSecure.post("/jwt", { email: user?.email });
                 // Signed in
                 const user = result.user;
                 const Toast = Swal.mixin({
@@ -161,7 +166,6 @@ const AuthContext = ({ children }) => {
 
     const handelSingOut = () => {
         // Sign-out successful.
-
         const Toast = Swal.mixin({
             toast: true,
             position: "top",
@@ -177,7 +181,6 @@ const AuthContext = ({ children }) => {
             icon: "warning",
             title: "Signed Out successfully"
         });
-
         return signOut(auth);
     }
 
@@ -223,18 +226,18 @@ const AuthContext = ({ children }) => {
                         title: "Something is wrong"
                     });
                 }
-            });
+            });2
     };
 
     const handelGoogleSingIn = () => {
         signInWithPopup(auth, provider)
             .then(() => {
                 // Signed in
-                axios.post("http://localhost:5000/jwt", { email: user?.email }, { withCredentials: true });
+                AxiosSecureUse.post("/jwt", { email: user?.email });
                 // console.log(user?.email);
                 // console.log(provider?.email);
-                // console.log(provider);
-                // console.log(auth,user);
+                console.log(provider);
+                console.log(auth,user);
                 
                 
                 // Password reset email sent!
@@ -253,6 +256,8 @@ const AuthContext = ({ children }) => {
                     icon: "success",
                     title: "Successfully Google login"
                 });
+
+                
             })
             .catch((error) => {
                 // Handle errors here.
@@ -263,7 +268,7 @@ const AuthContext = ({ children }) => {
                 // console.log('1',errorCode,'2', errorMessage,'3', email,'4', credential,'5',error);
                 
                 // console.error(`Error: ${errorCode}, Message: ${errorMessage}`);
-                if (errorCode || errorMessage) {
+                if (error.errorCode || error.errorMessage) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top",
@@ -281,7 +286,9 @@ const AuthContext = ({ children }) => {
                         
                     });
                 }
-                console.log("hi error",errorCode, errorMessage);
+                console.log("hi error",error);
+                console.log(error);
+                
             
             });
     }

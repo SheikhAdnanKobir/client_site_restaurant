@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link} from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 import { SiGooglecloud } from "react-icons/si";
@@ -8,11 +8,15 @@ import { AuthUse } from '../AuthContext/AuthContext';
 import Lottie from 'lottie-react';
 import LottieAnimation from "../assets/Lottie.json"
 import BG from "../assets/output.jpg"
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
 
-    const { authSignIn, handelGoogleSingIn } = useContext(AuthUse);
+    const { authSignIn, handelGoogleSingIn,user } = useContext(AuthUse);
     const [visible, setVisible] = useState(false);
+    const navigate = useNavigate();
+
 
 
     const handelVidible = () => {
@@ -34,17 +38,25 @@ const Login = () => {
 
     const google = () => {
         handelGoogleSingIn()
+       
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate("/foods2");
+        }
+    }, [user, navigate]);
 
     return (
         <div style={{
             position: 'relative',
             height: '100vh',
-            overflow: 'hidden'}}>
+            overflow: 'hidden'
+        }}>
 
             <div>
                 <img className='z-0 absolute h-screen w-screen object-cover blur-md' src={BG} alt="" />
-            </div>              
+            </div>
 
             <div className='relative flex justify-center items-center h-dvh z-10'>
                 <div className=' flex justify-center items-center mt-20 mx-auto '>

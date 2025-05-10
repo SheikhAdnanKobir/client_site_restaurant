@@ -26,7 +26,7 @@ const Allfoods = () => {
                     .includes(searchText
                         .toLowerCase())));
                 // console.log(res.data.filter(item => item.name.includes(searchText)));
-                console.log(res.data);
+                // console.log(res.data);
 
             })
             .catch(error => console.error(error));

@@ -4,18 +4,19 @@ import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 import { AuthUse } from "../AuthContext/AuthContext";
 import Swal from 'sweetalert2';
+import AxiosSecure from './../AuthContext/AxiosSecure';
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const { user } = useContext(AuthUse); // Assuming you have a context for user authentication
     // console.log("User:", user); // Log the user object to see if it's defined
 
+    const AxiosSecureInstance = AxiosSecure();
+
     useEffect(() => {
-        axios.get(`http://localhost:5000/orders?email=${user.email}`, {
-            withCredentials: true
-        })
+        AxiosSecureInstance.get(`/orders?email=${user.email}`)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 const myFoods = response.data.filter(food => food.buyerEmail === user?.email);
                 setOrders(myFoods);
             })
