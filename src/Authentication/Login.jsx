@@ -43,7 +43,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate("/foods2");
+            navigate("/foods");
         }
     }, [user, navigate]);
 

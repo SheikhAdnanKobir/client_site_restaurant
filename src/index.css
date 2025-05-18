@@ -83,3 +83,10 @@
   box-shadow: 0 4px 15px rgba(255, 93, 44, 0.4);
 }
 
+.selected {
+  background-color: #ff6600;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 18px;
+  transition: all 0.4s ease-in-out;
+}

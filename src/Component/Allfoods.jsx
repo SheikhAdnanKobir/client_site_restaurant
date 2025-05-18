@@ -4,33 +4,74 @@ import axios from 'axios';
 import Lottie from 'lottie-react';
 import { Helmet } from 'react-helmet';
 import LottieAnimation from "../assets/search_anime.json"
+import { useLoaderData } from 'react-router-dom';
 
 const Allfoods = () => {
 
     const [searchText, setSearchText] = useState('');
     const [foods, setFoods] = useState([]);
+    // console.log(foods);
+
+
+    const [itemsPrPage, setItemsPrPage] = useState(10);
+    const [currentpage, setCurrentpage] = useState(0);
+
+    const { count } = useLoaderData();
+    // console.log(count);
+    // const itemsPage = 10;
+    const numberOfPages = Math.ceil(count / itemsPrPage);
+    console.log(numberOfPages);
+
+    const pages = [...Array(numberOfPages).keys()];
+
+    // const page=[];
+    // for (let i = 0; i < numberOfPages; i++) {
+    //     page.push(i);
+    // }
+
+    const handelParPage = (e) => {
+        const valu = parseInt(e.target.value);
+        setItemsPrPage(valu)
+        setCurrentpage(0);
+    }
+
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/users?page=${currentpage}&size=${itemsPrPage}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setFoods(data)
+    //         })
+    // }, [currentpage, itemsPrPage]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
-            .then(response => response.json())
-            .then(data => {
-                setFoods(data)
-            })
-    }, [])
 
-    useEffect(() => {
+        if ((searchText.trim() !== "")) {
+            axios.get(`http://localhost:5000/users?search=${searchText}`)
+                .then(res => {
+                    { }
+                    // setFoods(res.data.filter(item => item.name.toLowerCase()
+                    //     .includes(searchText
+                    //         .toLowerCase())));
+                    setFoods(res.data);
+                    // console.log(res.data.filter(item => item.name.includes(searchText)));
+                    // console.log(res.data);
+                    console.log(searchText);
 
-        axios.get(`http://localhost:5000/users?search=${searchText}`)
-            .then(res => {
-                setFoods(res.data.filter(item => item.name.toLowerCase()
-                    .includes(searchText
-                        .toLowerCase())));
-                // console.log(res.data.filter(item => item.name.includes(searchText)));
-                // console.log(res.data);
 
-            })
-            .catch(error => console.error(error));
-    }, [searchText]);
+                })
+                .catch(error => console.error(error));
+        }
+        else {
+            fetch(`http://localhost:5000/users?page=${currentpage}&size=${itemsPrPage}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    setFoods(data)
+                })
+        }
+    }, [searchText, currentpage, itemsPrPage]);
 
 
 
@@ -84,7 +125,20 @@ const Allfoods = () => {
                         }
                     </div>
             }
+            <div className='flex justify-center items-center gap-5 py-10'>
+                <button onClick={() => setCurrentpage(currentpage - 1)} disabled={currentpage === 0} className="btn btn-outline btn-primary">Previous</button>
+                {
+                    pages.map((page, index) => <button key={index} onClick={() => setCurrentpage(index)} className={`btn btn-outline btn-primary ${currentpage === page ? "selected" : undefined}`}>{page + 1}</button>)
+                }
+                <select value={itemsPrPage} onChange={handelParPage} className="border-2 rounded-md p-2">
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                </select>
 
+                <button onClick={() => setCurrentpage(currentpage + 1)} disabled={currentpage === numberOfPages - 1} className="btn btn-outline btn-primary">Next</button>
+            </div>
         </div>
     );
 };

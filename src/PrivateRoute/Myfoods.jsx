@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
+import AxiosSecure from './../AuthContext/AxiosSecure';
 
 const Myfoods = () => {
     const [foods, setFoods] = useState([]);
@@ -13,17 +14,29 @@ const Myfoods = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
+    const AxiosSecureInstance = AxiosSecure();
+
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
-            .then(response => response.json())
-            .then(data => {
-                const myFoods = data.filter(food => food.email === user?.email);
-                setFoods(myFoods);
-                setLoading(false);
-            })
+        if (user?.email) {
+            AxiosSecureInstance.get(`/myproduct?email=${user.email}`)
+                .then(response => {
+                    setFoods(response.data);
+                    setLoading(false);
+                });
+        }
+    }, [user?.email]);
 
-    }, [])
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/users")
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const myFoods = data.filter(food => food.email === user?.email);
+    //             setFoods(myFoods);
+    //             setLoading(false);
+    //         })
+
+    // }, [])
 
     const handelDeltet = (id) => {
 
