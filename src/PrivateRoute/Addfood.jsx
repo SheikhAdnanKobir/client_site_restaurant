@@ -47,7 +47,7 @@ const Addfood = () => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
 
-                fetch("http://localhost:5000/users", {
+                fetch("https://server-site-restaurant.vercel.app/users", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',

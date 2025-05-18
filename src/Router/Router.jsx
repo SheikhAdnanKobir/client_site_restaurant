@@ -28,7 +28,7 @@ const Router = createBrowserRouter([
       {
         path: "/foods",
         element:<Allfoods></Allfoods>,
-        loader: () => fetch("http://localhost:5000/datacount")
+        loader: () => fetch("https://server-site-restaurant.vercel.app/datacount")
       },
       {
         path:"/gallery",
@@ -56,17 +56,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "foods/details/:id",
-        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        loader:({ params }) =>fetch(`https://server-site-restaurant.vercel.app/users/${params.id}`),
         element:<Idsingal></Idsingal>
       },
       {
         path: "purchase/:id",
-        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        loader:({ params }) =>fetch(`https://server-site-restaurant.vercel.app/users/${params.id}`),
         element:<Privatecontrol><Purchase></Purchase></Privatecontrol>
       },
       {
         path:"myfoods/update/:id",
-        loader:({ params }) =>fetch(`http://localhost:5000/users/${params.id}`),
+        loader:({ params }) =>fetch(`https://server-site-restaurant.vercel.app/users/${params.id}`),
         element:<Privatecontrol><Update></Update></Privatecontrol>
       }
     ],

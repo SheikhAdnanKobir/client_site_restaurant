@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../Firebase/Firebase.init';
 
 const axiosInstsnce = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://server-site-restaurant.vercel.app',
     withCredentials: true,
 });
 

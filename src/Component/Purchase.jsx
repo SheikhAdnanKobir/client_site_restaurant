@@ -89,7 +89,7 @@ const Purchase = () => {
 
         console.log(_id);
         // Please purchase a Section
-        axios.patch(`http://localhost:5000/users/${_id}`,{
+        axios.patch(`https://server-site-restaurant.vercel.app/users/${_id}`,{
             purchaseQuantity: quantityInput,
         })
             .then(res => {
@@ -102,7 +102,7 @@ const Purchase = () => {
             });
             
 
-        axios.post('http://localhost:5000/orders', orderData)
+        axios.post('https://server-site-restaurant.vercel.app/orders', orderData)
             .then(res => {
                 if (res.data.acknowledged) {
                     toast.success('Order placed successfully!', {

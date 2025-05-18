@@ -135,7 +135,7 @@ const AuthContext = ({ children }) => {
                 console.log(currentUser);
 
                 // console.log(currentUser);
-                axios.post('http://localhost:5000/jwt', currentUser, {
+                axios.post('https://server-site-restaurant.vercel.app/jwt', currentUser, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -147,7 +147,7 @@ const AuthContext = ({ children }) => {
                     });
             }
             else {
-                axios.post("http://localhost:5000/logout", {}, {
+                axios.post("https://server-site-restaurant.vercel.app/logout", {}, {
                     withCredentials: true
                 })
                     .then(res => {
