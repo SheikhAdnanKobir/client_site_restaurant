@@ -68,7 +68,7 @@ const Update = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // PATCH রিকুয়েস্ট পাঠানো
-                fetch(`https://server-site-restaurant.vercel.app/users/${data._id}`, {
+                fetch(`http://localhost:5000/users/${data._id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",

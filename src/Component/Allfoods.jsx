@@ -19,7 +19,7 @@ const Allfoods = () => {
     const { count } = useLoaderData();
     // console.log(count);
     // const itemsPage = 10;
-    const numberOfPages = Math.ceil(count / itemsPrPage);
+    const numberOfPages = Math.ceil(count / itemsPrPage)|| 1;
     console.log(numberOfPages);
 
     const pages = [...Array(numberOfPages).keys()];
@@ -37,7 +37,7 @@ const Allfoods = () => {
 
 
     // useEffect(() => {
-    //     fetch(`https://server-site-restaurant.vercel.app/users?page=${currentpage}&size=${itemsPrPage}`)
+    //     fetch(`http://localhost:5000/users?page=${currentpage}&size=${itemsPrPage}`)
     //         .then(response => response.json())
     //         .then(data => {
     //             console.log(data);
@@ -48,7 +48,7 @@ const Allfoods = () => {
     useEffect(() => {
 
         if ((searchText.trim() !== "")) {
-            axios.get(`https://server-site-restaurant.vercel.app/users?search=${searchText}`)
+            axios.get(`http://localhost:5000/users?search=${searchText}`)
                 .then(res => {
                     { }
                     // setFoods(res.data.filter(item => item.name.toLowerCase()
@@ -64,7 +64,7 @@ const Allfoods = () => {
                 .catch(error => console.error(error));
         }
         else {
-            fetch(`https://server-site-restaurant.vercel.app/users?page=${currentpage}&size=${itemsPrPage}`)
+            fetch(`http://localhost:5000/users?page=${currentpage}&size=${itemsPrPage}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

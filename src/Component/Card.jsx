@@ -11,7 +11,7 @@ const Card = ({ food }) => {
     // console.log(food);
 
     // useEffect(()=>{
-    //     axios.get(`https://server-site-restaurant.vercel.app/users`)
+    //     axios.get(`http://localhost:5000/users`)
     //     .then((response) => {
     //         // console.log(response.data);
     //     })
@@ -19,7 +19,7 @@ const Card = ({ food }) => {
 
     // const ditelsHandel = (id) => {
     //     // console.log(id);
-    //     // axios.get(`https://server-site-restaurant.vercel.app/users/${id}`)
+    //     // axios.get(`http://localhost:5000/users/${id}`)
     //     // .then((response) => {
     //     //     console.log(response.data);
     //     // })

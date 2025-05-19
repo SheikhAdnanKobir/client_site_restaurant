@@ -28,7 +28,7 @@ const Myfoods = () => {
     }, [user?.email]);
 
     // useEffect(() => {
-    //     fetch("https://server-site-restaurant.vercel.app/users")
+    //     fetch("http://localhost:5000/users")
     //         .then(response => response.json())
     //         .then(data => {
     //             const myFoods = data.filter(food => food.email === user?.email);
@@ -51,7 +51,7 @@ const Myfoods = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://server-site-restaurant.vercel.app/users/${id}`, {
+                fetch(`http://localhost:5000/users/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
