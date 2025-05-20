@@ -25,10 +25,10 @@ const Myfoods = () => {
                     setLoading(false);
                 });
         }
-    }, [user?.email]);
+    }, [user?.email, AxiosSecureInstance]);
 
     // useEffect(() => {
-    //     fetch("http://localhost:5000/users")
+    //     fetch("https://server-site-restaurant.vercel.app/users")
     //         .then(response => response.json())
     //         .then(data => {
     //             const myFoods = data.filter(food => food.email === user?.email);
@@ -51,7 +51,7 @@ const Myfoods = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/users/${id}`, {
+                fetch(`https://server-site-restaurant.vercel.app/users/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

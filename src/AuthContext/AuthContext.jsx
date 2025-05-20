@@ -45,7 +45,11 @@ const AuthContext = ({ children }) => {
                 Toast.fire({
                     icon: "success",
                     title: "Signed Up successfully"
-                });
+                })
+                .then(() => {
+                    // প্রোফাইল আপডেট হওয়ার পর টোকেন জেনারেশন
+                    return AxiosSecureUse.post("/jwt", { email: user.email });
+                })
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -73,7 +77,7 @@ const AuthContext = ({ children }) => {
     const authSignIn = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                AxiosSecure.post("/jwt", { email: user?.email });
+                // AxiosSecure.post("/jwt", { email: user?.email });
                 // Signed in
                 const user = result.user;
                 const Toast = Swal.mixin({
@@ -90,7 +94,11 @@ const AuthContext = ({ children }) => {
                 Toast.fire({
                     icon: "success",
                     title: "Signed In successfully"
-                });
+                })
+                .then(() => {
+                    // সরাসরি ইমেইল ব্যবহার করে টোকেন জেনারেশন
+                    return AxiosSecureUse.post("/jwt", { email: user.email });
+                })
 
             })
             .catch((error) => {
@@ -135,9 +143,7 @@ const AuthContext = ({ children }) => {
                 console.log(currentUser);
 
                 // console.log(currentUser);
-                axios.post('http://localhost:5000/jwt', currentUser, {
-                    withCredentials: true
-                })
+                AxiosSecureUse.post('/jwt', currentUser)
                     .then(res => {
                         console.log(res.data);
                         // localStorage.setItem("accessToken", res.data.token)
@@ -147,7 +153,7 @@ const AuthContext = ({ children }) => {
                     });
             }
             else {
-                axios.post("http://localhost:5000/logout", {}, {
+                AxiosSecureUse.post("/logout", {}, {
                     withCredentials: true
                 })
                     .then(res => {

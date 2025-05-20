@@ -14,7 +14,8 @@ const MyOrders = () => {
     const AxiosSecureInstance = AxiosSecure();
 
     useEffect(() => {
-        AxiosSecureInstance.get(`/orders?email=${user.email}`)
+        if (user?.email) {
+            AxiosSecureInstance.get(`/orders?email=${user.email}`)
             .then((response) => {
                 // console.log(response.data);
                 const myFoods = response.data.filter(food => food.buyerEmail === user?.email);
@@ -23,8 +24,9 @@ const MyOrders = () => {
             .catch((error) => {
                 console.error("Error fetching orders:", error);
             });
+        }
 
-    }, [])
+    }, [user?.email, AxiosSecureInstance]);
     // আপনি এখানে MongoDB থেকে JWT সহ অর্ডারগুলো লোড করে নিবেন
 
     const handleDelete = (id) => {
@@ -42,7 +44,7 @@ const MyOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/orders/${id}`, {
+                fetch(`https://server-site-restaurant.vercel.app/orders/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
