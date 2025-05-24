@@ -3,6 +3,7 @@ import { data, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthUse } from '../AuthContext/AuthContext';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Purchase = () => {
     const food = useLoaderData(); // comes from loader function
@@ -125,6 +126,9 @@ const Purchase = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Purchase: {name}</title>
+            </Helmet>
             <div className="max-w-2xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl p-8">
                 <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Purchase: {name}</h2>
                 <form onSubmit={handlePurchase} className="space-y-4">

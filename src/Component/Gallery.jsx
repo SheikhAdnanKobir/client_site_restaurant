@@ -32,6 +32,9 @@ const Gallery = () => {
 
     return (
         <div className='py-20'>
+            <Helmet>
+                <title>Flavory Moments - Gallery</title>
+            </Helmet>
             <div>
                 <h2 className='text-center text-3xl font-bold md:text-5xl lg:text-7xl mb-3 lg:mb-5'>
                     Flavory Moments <span className='text-red-500 font-extrabold'>C̷a̷p̷t̷u̷r̷e̷d̷</span>

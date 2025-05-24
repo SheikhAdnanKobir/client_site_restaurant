@@ -88,7 +88,7 @@ const Addfood = () => {
     return (
         <div className='mx-auto bg-cyan-500 py-10'>
             <Helmet>
-                <title>Add Equipment</title>
+                <title>Add Food</title>
             </Helmet>
             <h1 className='text-4xl mb-5 font-rubik text-center font-semibold text-white psans'>Add a New Dish</h1>
             <form onSubmit={addData} className="font-rubik grid grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto p-6 bg-green-900/20 text-white rounded-lg">

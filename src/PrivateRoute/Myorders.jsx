@@ -66,6 +66,9 @@ const MyOrders = () => {
 
     return (
         <div className="p-4 md:p-10 bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Flavory | My Orders</title>
+            </Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">🛒 My Orders</h2>
             {
                 orders.length === 0 ?

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const ErrorPage = () => {
     const navigate = useNavigate();
@@ -10,6 +11,10 @@ const ErrorPage = () => {
 
     return (
         <div className="h-screen w-screen flex flex-col justify-center items-center bg-gray-100 px-4">
+            <Helmet>
+                <title>404 - Page Not Found</title>
+                <meta name="description" content="The page you're looking for doesn't exist or has been moved." />
+            </Helmet>
             <img
                 src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
                 alt="404 Error"

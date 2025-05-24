@@ -75,6 +75,8 @@ const Myfoods = () => {
 
     return (
         <div>
+            <Helmet><title>Flavory | My Foods</title></Helmet>
+                
             <div className='mb-8'>
                 <h2 className="text-3xl md:text-4xl font-bold text-center psans py-5">
                     Explore All Our Delicious Foods

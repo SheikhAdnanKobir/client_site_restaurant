@@ -49,6 +49,11 @@ const Homefront = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Flavory | Home</title>
+            </Helmet>
+            
+            {/* First section */}
             <div>
                 <h1 className='md:text-7xl lg:text-7xl text-4xl text-center psans pt-5'>Welcome Our <span className='text-orange-500 font-extrabold'>𝓡𝓮𝓼𝓽𝓪𝓾𝓻𝓪𝓷𝓽</span></h1>
                 <p className=' max-w-[850px] text-center mx-auto my-5 psans'>Enjoy delicious, authentic food made with fresh, organic ingredients. From traditional recipes to modern favorites, we serve every meal with care and love. Experience warm hospitality, cozy ambiance, and unforgettable flavors. Taste the difference. Feel at home. Come hungry — leave happy. Your satisfaction is our priority.</p>

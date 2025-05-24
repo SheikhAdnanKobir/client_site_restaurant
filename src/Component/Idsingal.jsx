@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Idsingal = () => {
 
@@ -24,6 +25,9 @@ const Idsingal = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
+            <Helmet>
+                <title>Foods Details</title>
+            </Helmet>
             <div className="grid md:grid-cols-2 gap-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-6">
                 <img
                     src={image}

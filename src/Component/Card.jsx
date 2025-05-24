@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { TbListDetails } from "react-icons/tb";
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -29,7 +30,9 @@ const Card = ({ food }) => {
 
     return (
         <div>
-
+            <Helmet>
+                <title>{name} - Food Card</title>
+            </Helmet>
             <div className="w-full rounded-2xl overflow-hidden shadow-lg bg-gray-800 mx-auto  hover:scale-[1.02] transition-transform duration-300">
                 <img className="w-full h-48 object-cover" src={image} alt="Food Image" />
                 <div className="px-6 py-6">

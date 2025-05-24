@@ -93,7 +93,7 @@ const Update = () => {
     return (
         <div className='mx-auto py-10'>
             <Helmet>
-                <title>Update</title>
+                <title>Update Food</title>
             </Helmet>
             <h1 className='text-center mb-10 font-rubik text-purple-700'>
                 <span className="text-4xl font-bold">Update Item</span>
